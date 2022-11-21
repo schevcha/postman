@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "82b8d118-73d9-413b-be35-158185bd9577",
+		"name": "Проект 10.6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22975961"
+	},
+	"item": [
+		{
+			"name": "Фильтрация",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Тело ответа содержит id\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/pet/?page=1&page_size=6&species__name={{species__name}}&breed__code={{breed__code}}&gender__code={{gender__code}}&age={{age}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"pet",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "6"
+						},
+						{
+							"key": "species__name",
+							"value": "{{species__name}}"
+						},
+						{
+							"key": "breed__code",
+							"value": "{{breed__code}}"
+						},
+						{
+							"key": "gender__code",
+							"value": "{{gender__code}}"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Поиск отправленных данных формы по id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/pet_shelter_req/d6b3b596-5705-4a9f-a759-f8dbd2902c3d",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"pet_shelter_req",
+						"d6b3b596-5705-4a9f-a759-f8dbd2902c3d"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Поиск отправленных данных формы по id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/pet_shelter_req/d6b3b596-5705-4a9f-a759-f8dbd2902c3d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"pet_shelter_req",
+								"d6b3b596-5705-4a9f-a759-f8dbd2902c3d"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.14.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Nov 2022 14:09:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "253"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"d6b3b596-5705-4a9f-a759-f8dbd2902c3d\",\n    \"phone_num\": \"+79865432323\",\n    \"email\": \"dj@df.com\",\n    \"firstname\": \"Юлия\",\n    \"middlename\": \"Владленовна\",\n    \"lastname\": \"Шевченко\",\n    \"comment\": \"уааврв\",\n    \"pet\": \"1708750b-f0ce-47ac-b5fa-b24310d167fd\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Проверка id питомца из формы",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/pet/1708750b-f0ce-47ac-b5fa-b24310d167fd/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"pet",
+						"1708750b-f0ce-47ac-b5fa-b24310d167fd",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Проверка id питомца из формы",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/pet/1708750b-f0ce-47ac-b5fa-b24310d167fd/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"pet",
+								"1708750b-f0ce-47ac-b5fa-b24310d167fd",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.14.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Nov 2022 14:09:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "637"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"1708750b-f0ce-47ac-b5fa-b24310d167fd\",\n    \"breed\": {\n        \"id\": \"ce8e2940-9a60-4de7-85f7-7e49759fa080\",\n        \"name\": \"питбуль\",\n        \"code\": \"pitbull\"\n    },\n    \"species\": {\n        \"id\": \"718fe547-0574-4c04-8795-7e594e088c4e\",\n        \"name\": \"собака\",\n        \"code\": \"dog\"\n    },\n    \"status\": {\n        \"id\": \"076ea473-532c-443e-b7ee-f60b060d6bb2\",\n        \"name\": \"хотят забрать\",\n        \"code\": \"wait_home\"\n    },\n    \"doc\": {\n        \"id\": \"0bce1486-6bab-4cd4-a466-94d4cfdf3fd1\",\n        \"reg_num\": \"п24022020\",\n        \"date\": \"2020-02-24\",\n        \"cage\": \"А65ф\"\n    },\n    \"owner\": null,\n    \"gender\": {\n        \"id\": \"0045491e-e44e-410d-8efa-4168e3b41721\",\n        \"name\": \"мальчик\",\n        \"code\": \"m\"\n    },\n    \"name\": \"Феликс\",\n    \"age\": 2,\n    \"photo\": \"http://130.193.37.179/media/img/felix.jpeg\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://130.193.37.179",
+			"type": "string"
+		},
+		{
+			"key": "species__name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "breed__code",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "gender__code",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "age",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "search",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

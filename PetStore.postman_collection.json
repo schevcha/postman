@@ -1,0 +1,594 @@
+{
+	"info": {
+		"_postman_id": "47ee94f5-0094-4e17-b9f9-6152d2a54483",
+		"name": "PetStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22975961"
+	},
+	"item": [
+		{
+			"name": "/user/createWithArray",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"id\": 0,\r\n    \"username\": \"{{name_1}}\",\r\n    \"firstName\": \"Бэкович\",\r\n    \"lastName\": \"Бэкон\",\r\n    \"email\": \"fgdg@fpgo.ru\",\r\n    \"password\": \"qwerty\",\r\n    \"phone\": \"1239\",\r\n    \"userStatus\": 0\r\n  },\r\n\r\n    {\r\n    \"id\": 0,\r\n    \"username\": \"{{name_2}}\",\r\n    \"firstName\": \"Аааа\",\r\n    \"lastName\": \"Валар\",\r\n    \"email\": \"gofoigr@fpg.com\",\r\n    \"password\": \"1111111\",\r\n    \"phone\": \"55555555\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/createWithArray",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"createWithArray"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/{{name_1}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Сохраняем номер телефона\", function () {\r",
+							"    var jsonData = JSON.parse(responseBody)\r",
+							"    pm.collectionVariables.set(\"phone_1\", jsonData.phone)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"В теле ответа содержится name_1\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(pm.collectionVariables.get(\"name_1\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/{{name_1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"{{name_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/user/{{name_1}}",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/{{name_1}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{name_1}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 15:34:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, api_key, Authorization"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(9.2.9.v20150224)"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 9222968140497273170,\n    \"username\": \"Yak\",\n    \"firstName\": \"Бэкович\",\n    \"lastName\": \"Бэкон\",\n    \"email\": \"fgdg@fpgo.ru\",\n    \"password\": \"qwerty\",\n    \"phone\": \"1239\",\n    \"userStatus\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "/user/{{name_2}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Сохраняем номер телефона\", function () {\r",
+							"    var jsonData = JSON.parse(responseBody)\r",
+							"    pm.collectionVariables.set(\"phone_2\", jsonData.phone)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"В теле ответа не содержится name_1\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(pm.collectionVariables.get(\"name_1\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/{{name_2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"{{name_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/user/{{name_2}}",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/{{name_2}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{name_2}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 15:38:35 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, api_key, Authorization"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(9.2.9.v20150224)"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 9222968140497273171,\n    \"username\": \"Karl\",\n    \"firstName\": \"Аааа\",\n    \"lastName\": \"Валар\",\n    \"email\": \"gofoigr@fpg.com\",\n    \"password\": \"1111111\",\n    \"phone\": \"55555555\",\n    \"userStatus\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "/user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set(\"phone_3\", 456);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Сохранение id User 3 в переменную user_id\", function () {\r",
+							"    var jsonData = JSON.parse(responseBody);\r",
+							"    pm.collectionVariables.set(\"user_id\", jsonData.message);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 0,\r\n  \"username\": \"Эа\",\r\n  \"firstName\": \"{{name_1}}\",\r\n  \"lastName\": \"{{name_2}}\",\r\n  \"email\": \"123452@fg.com\",\r\n  \"password\": \"gfdsa\",\r\n  \"phone\": \"{{phone_3}}\",\r\n  \"userStatus\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"username\": \"Эа\",\r\n  \"firstName\": \"{{name_1}}\",\r\n  \"lastName\": \"{{name_2}}\",\r\n  \"email\": \"123452@fg.com\",\r\n  \"password\": \"gfdsa\",\r\n  \"phone\": \"{{phone_3}}\",\r\n  \"userStatus\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 15:51:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, api_key, Authorization"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(9.2.9.v20150224)"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"type\": \"unknown\",\n    \"message\": \"9222968140497273345\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/user/Эа",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"Сохранение имени User 3 в переменную name_3\", function () {\r",
+							"    pm.collectionVariables.set(\"name_3\", jsonData.username);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id User 3 содержится в ответе от сервера\", function () {\r",
+							"    pm.expect(pm.collectionVariables.get(\"user_id\")).to.include(jsonData.id);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/user/Эа",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"Эа"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/{{name_3}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": {{user_id}},\r\n  \"username\": \"Kim\",\r\n  \"firstName\": \"1\",\r\n  \"lastName\": \"2\",\r\n  \"email\": \"33@maim.com\",\r\n  \"password\": \"12345\",\r\n  \"phone\": \"54321\",\r\n  \"userStatus\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/{{name_3}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"{{name_3}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/user/{{name_3}}",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{user_id}},\r\n  \"username\": \"Эа\",\r\n  \"firstName\": \"1\",\r\n  \"lastName\": \"2\",\r\n  \"email\": \"33@maim.com\",\r\n  \"password\": \"12345\",\r\n  \"phone\": \"54321\",\r\n  \"userStatus\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/{{name_3}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{name_3}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 16:34:45 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, api_key, Authorization"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(9.2.9.v20150224)"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"type\": \"unknown\",\n    \"message\": \"9222968140497273345\"\n}"
+				}
+			]
+		},
+		{
+			"name": "user/{{name_3}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"В ответе нет значения переменной name_3\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(pm.collectionVariables.get(\"name_3\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/{{name_3}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"{{name_3}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://petstore.swagger.io/v2",
+			"type": "string"
+		},
+		{
+			"key": "name_1",
+			"value": "Yak",
+			"type": "string"
+		},
+		{
+			"key": "name_2",
+			"value": "Karl",
+			"type": "string"
+		},
+		{
+			"key": "name_3",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "phone_1",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "phone_2",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
